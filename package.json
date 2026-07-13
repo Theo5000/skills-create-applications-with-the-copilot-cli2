@@ -6,7 +6,7 @@
     "calc": "src/cli.js"
   },
   "scripts": {
-    "test": "mocha --recursive --exit"
+    "test": "mocha \"src/tests/**/*.js\" --exit"
   },
   "devDependencies": {
     "mocha": "^10.2.0",
