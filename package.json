@@ -6,7 +6,11 @@
     "calc": "src/cli.js"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "mocha --recursive --exit"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^4.3.8"
   },
   "author": "",
   "license": "MIT"
