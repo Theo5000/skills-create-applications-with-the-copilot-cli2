@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { add, subtract, multiply, divide } = require('../calculator');
+const { add, subtract, multiply, divide, modulo, power, squareRoot } = require('../calculator');
 
 describe('Calculator - basic operations', () => {
   describe('Addition', () => {
@@ -69,6 +69,52 @@ describe('Calculator - basic operations', () => {
 
     it('throws on invalid numeric input', () => {
       expect(() => add(1, 'a')).to.throw(/Invalid number/);
+    });
+  });
+});
+
+// Tests for extended operations: modulo, power, squareRoot
+describe('Calculator - extended operations', () => {
+  describe('Modulo', () => {
+    it('computes remainder (5 % 2 => 1)', () => {
+      expect(modulo(5, 2)).to.equal(1);
+    });
+
+    it('works with negative numbers (5 % -2 => 1 or language-defined)', () => {
+      // JS % preserves sign of dividend: 5 % -2 === 1
+      expect(modulo(5, -2)).to.equal(1);
+    });
+
+    it('throws on modulo by zero', () => {
+      expect(() => modulo(1, 0)).to.throw(/Modulo by zero/);
+    });
+  });
+
+  describe('Power (exponentiation)', () => {
+    it('computes powers (2 ^ 3 => 8)', () => {
+      expect(power(2, 3)).to.equal(8);
+    });
+
+    it('computes fractional exponents', () => {
+      expect(power(9, 0.5)).to.be.closeTo(3, 1e-12);
+    });
+
+    it('parses numeric strings', () => {
+      expect(power('2', '4')).to.equal(16);
+    });
+  });
+
+  describe('Square root', () => {
+    it('computes sqrt(16) => 4', () => {
+      expect(squareRoot(16)).to.equal(4);
+    });
+
+    it('computes sqrt(2) approximately', () => {
+      expect(squareRoot(2)).to.be.closeTo(Math.sqrt(2), 1e-12);
+    });
+
+    it('throws on negative input', () => {
+      expect(() => squareRoot(-1)).to.throw(/Square root of negative number/);
     });
   });
 });
