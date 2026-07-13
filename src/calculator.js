@@ -4,6 +4,9 @@
 // - Subtraction: subtract(a, b, ...rest) — subtracts numbers sequentially (a - b - c ...)
 // - Multiplication: multiply(a, b, ...rest) — multiplies two or more numbers
 // - Division: divide(a, b, ...rest) — divides numbers sequentially (a / b / c ...), with division-by-zero handling
+// - Modulo: modulo(a, b) — remainder of a divided by b
+// - Exponentiation: power(base, exponent) — base raised to the exponent
+// - Square root: squareRoot(n) — returns sqrt(n), errors for negative inputs
 
 /**
  * Ensure all inputs are numbers; throws TypeError if parsing fails.
@@ -46,4 +49,24 @@ function divide(...args) {
   }, nums[0]);
 }
 
-module.exports = { add, subtract, multiply, divide };
+// Returns the remainder of a divided by b
+function modulo(a, b) {
+  const [x, y] = ensureNumbers([a, b]);
+  if (y === 0) throw new Error('Modulo by zero');
+  return x % y;
+}
+
+// Returns base raised to the exponent
+function power(base, exponent) {
+  const [b, e] = ensureNumbers([base, exponent]);
+  return Math.pow(b, e);
+}
+
+// Returns the square root of n; errors for negative inputs
+function squareRoot(n) {
+  const [x] = ensureNumbers([n]);
+  if (x < 0) throw new Error('Square root of negative number');
+  return Math.sqrt(x);
+}
+
+module.exports = { add, subtract, multiply, divide, modulo, power, squareRoot };
