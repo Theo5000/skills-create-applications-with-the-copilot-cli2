@@ -1,0 +1,13 @@
+{
+  "name": "calculator-cli",
+  "version": "0.1.0",
+  "description": "Simple Node.js CLI calculator supporting add, sub, mul, div",
+  "bin": {
+    "calc": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
